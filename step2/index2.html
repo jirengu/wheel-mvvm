@@ -1,0 +1,46 @@
+<script>
+  // 发布订阅模式 publish/ subscribe 
+  
+  class Publisher {
+    constructor(){
+      this.subscribes = []
+    }
+    addSub(sub) {
+      if(this.subscribes.indexOf(sub) === -1){
+        this.subscribes.push(sub)
+      }
+    }
+    removeSub(sub) {
+      let index = this.subscribes.indexOf(sub)
+      if(index > -1){
+        this.subscribes.splice(index, 1)
+      }
+    }
+    notify() {
+      this.subscribes.forEach(sub=>sub.update())
+    }
+  }
+
+  class Subscriber {
+    constructor(name){
+      this.name = name
+    }
+    update() {
+      console.log(`${this.name} updated`)
+    }
+    addToPub(pub) {
+      pub.addSub(this)
+    }
+  }
+
+  let pub = new Publisher()
+  let sub1 = new Subscriber('hunger')
+  let sub2 = new Subscriber('valley')
+  
+  sub1.addToPub(pub)
+  sub2.addToPub(pub)
+
+  pub.notify()
+
+
+</script>

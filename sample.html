@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MVVM 原理</title>
+</head>
+<body>
+   <div id="app">
+     <input type="text" v-model="text">
+     <p>{{text}}</p>
+     <button v-on:click="sayHi"> sayHi </button>
+   </div>
+
+<script src="js/observer.js"></script>
+<script src="js/watcher.js"></script>
+<script src="js/compile.js"></script>
+<script src="js/mvvm.js"></script>
+
+<script>
+  
+</script>
+
+<script>
+  // var vm = new MVVM({
+  //   el: '#app',
+  //   data: {
+  //     text: 'hello'
+  //   },
+  //   methods: {
+  //     sayHi() {
+  //       this.text = 'hi world'
+  //     }
+  //   }
+  // })
+
+</script>
+</body>
+</html>

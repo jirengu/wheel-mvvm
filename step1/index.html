@@ -1,0 +1,57 @@
+
+<script>
+  
+
+let data = {
+  name: 'hunger',
+  friends: [1, 2, 3]
+}
+observe(data)
+
+// data.name = 'valley'
+// data.friends[0] = 4
+
+
+
+function observe(data) {
+  if(!data || typeof data !== 'object') return
+  // for(let key in data) {
+  //   let val = data[key]
+  //   Object.defineProperty(data, key, {
+  //     enumerable: true,
+  //     configurable: false,
+  //     get() {
+  //       console.log(`get ${val}`)
+  //       return val
+  //     },
+  //     set(newVal) {
+  //       console.log(`changes happen: ${val} => ${newVal}`)
+  //       val = newVal
+  //     }
+  //   })
+  //   if(typeof val === 'object'){
+  //     observe(val)
+  //   }
+  // }
+  var keys = Object.keys(data)
+  keys.forEach(key=>{
+    var val = data[key]
+    Object.defineProperty(data, key, {
+      enumerable: true,
+      configurable: false,
+      get() {
+        console.log(`get ${val}`)
+        return val
+      },
+      set(newVal) {
+        console.log(`changes happen: ${val} => ${newVal}`)
+        val = newVal
+      }
+    })
+    if(typeof val === 'object'){
+      observe(val)
+    }
+  })
+}
+
+</script>
